@@ -118,11 +118,11 @@ void loop() {
    
    c = strip.Color(0, 0, 255); // Blue
    rainbow(c);
-   c = strip.Color(255, 0, 0);
+   c = strip.Color(255, 0, 0); // Red
    rainbow(c);
-   c = strip.Color(0, 255, 0);
+   c = strip.Color(0, 255, 0); // Green
    rainbow(c);
-   c = strip.Color(255, 255, 255);
+   c = strip.Color(255, 255, 255); // White
    rainbow(c);
 }
 
