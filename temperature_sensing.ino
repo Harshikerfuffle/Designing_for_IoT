@@ -1,5 +1,7 @@
 //HARSHIKA JAIN
+//built on arduino uno 
 #define aref_voltage 3.3 // we tie 3.3V to ARef and measure it with a multimeter!
+
 
   int TempSensor = A1;
   int LED_Red = 2;
