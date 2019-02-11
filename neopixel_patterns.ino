@@ -137,5 +137,85 @@ void loop() {
 // }
 // }
 
-   
+// _______________________________________________________________________________
+
+
+CODE FOR TIMER:
+
+/*
+ * Project Lab3Recap
+ * Description:
+ * Author:
+ * Date:
+ */
+
+int buttonPin = D2;
+
+unsigned long timerStartedAt = 0;
+bool timerRunning = false;
+
+int duration = 5 * 60 * 1000;
+
+int highlight = 2.5 * 60 * 1000;
+int last15Seconds = duration - (1000 * 15);
+
+bool lastState = false;
+
+bool highlightTriggered = false;
+
+// setup() runs once, when the device is first turned on.
+void setup() {
+  // Put initialization like pinMode and begin functions here.
+
+}
+
+// loop() runs over and over again, as quickly as it can execute.
+void loop() {
+  // The core of your code will likely live here.
+  int buttonReading = digitalRead( buttonPin );
+
+  if( buttonReading == LOW ){
+    timerStartedAt = millis();
+    timerRunning = true;
+
+    // make piezo sound
+  }
+
+  if( timerRunning == true ){
+    unsigned long now = millis() ;
+
+    unsigned long timerFinishesAt = timerStartedAt + duration;
+    unsigned long highLightAt = timerStartedAt + highlight;
+    unsigned long last15SecondsAt = timerStartedAt + last15Seconds;
+
+    if( last15SecondsAt < now  ){
+
+      if( lastState == true ){
+        // play sound
+        lastState = false;
+      }else{
+        // don't play sound
+        lastState = true;
+      }
+
+
+      //lastState = !lastState; 
+
+      delay( 1000 );
+
+    }
+
+    if( highLightAt < now && highlightTriggered == false ){
+      // trigger highlight
+      highlightTriggered= true;
+    }
+
+    if( timerFinishesAt < now ){
+      // timer finished
+
+    }
+
+  }
+
+}
   
