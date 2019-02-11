@@ -1,7 +1,6 @@
 // This #include statement was automatically added by the Particle IDE.
 #include <neopixel.h>
 
-// IMPORTANT: Set pixel COUNT, PIN and TYPE
 #define PIXEL_PIN D2
 #define PIXEL_COUNT 7
 #define PIXEL_TYPE WS2812
@@ -28,7 +27,6 @@ void setup() {
   pinMode( buttonPin , INPUT_PULLUP); // sets pin as input
   strip.begin();
   strip.show(); // Initialize all pixels to 'off'
-
 }
 
 void loop() { //publish my event you'll want some more complex stuff here
@@ -40,7 +38,6 @@ if( buttonState == LOW ){  // turn the LED ON
     }
 }
 
-
 void publishMyEvent()
 {
   // Remember that a device can publish at rate of about 1 event/sec,
@@ -48,7 +45,7 @@ void publishMyEvent()
   // Back to back burst of 4 messages will take 4 seconds to recover.
   // So we want to limit the amount of publish events that happen.
 
-  // check that it's been 10 secondds since our last publish
+  // check that it's been 10 seconds since our last publish
  
      if( lastPublishedAt + publishAfter < millis() ) {
       // Remember our subscribe is matching  "db2018/paired/"
@@ -106,7 +103,9 @@ void handleSharedEvent(const char *event, const char *data)
       // so stop doing stuff
       return;
     }
-    
+    // otherwise do your stuff to respond to
+    // the paired device here
+  
     uint32_t c;
     c = strip.Color(0, 0, 255); // Blue
     rainbow(c);
@@ -116,10 +115,6 @@ void handleSharedEvent(const char *event, const char *data)
     // rainbow(c);
     // c = strip.Color(255, 255, 255);
     // rainbow(c);
-    // otherwise do your stuff to respond to
-    // the paired device here
-
-    //motorOn = true;
 }
 
 void rainbow(uint32_t c){
