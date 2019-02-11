@@ -1,3 +1,8 @@
+//this code includes the code deployed on 3 argon connected systems with components namely NEOPIXEL, 
+//PIEZO BUZZER and SOLENOID.The help text has been commented out after the first example as they are basically the same. 
+
+// NEOPIXEL 
+
 // This #include statement was automatically added by the Particle IDE.
 #include <neopixel.h>
 
@@ -135,3 +140,116 @@ void rainbow(uint32_t c){
    }
    delay( 100 );
 }
+
+// _____________________________________________________________________________________________________
+
+// PIEZO BUZZER
+
+int piezoPin = D2;
+int buttonPin = D3;
+int buttonState = HIGH;
+
+int tone1[2] = {1908,2024}; // sample tone
+int noteDurations4[2] = {8,8};
+long lastPublishedAt = 0;
+int publishAfter = 10000;
+
+void setup()
+{
+
+pinMode( buttonPin , INPUT_PULLUP); // sets pin as input
+  Particle.subscribe(  "diot/2019/paired/sthfoodout/" , handleSharedEvent );
+}
+
+void loop(){
+    buttonState = digitalRead( buttonPin );
+    if( buttonState == LOW ) {
+      publishMyEvent();
+      delay(100); // delay for a bit
+    }
+}
+
+void publishMyEvent(){
+  if( lastPublishedAt + publishAfter < millis() ){
+      String eventName = "diot/2019/paired/sthfoodout/" + System.deviceID();
+      Particle.publish( eventName, "food is available" );
+      lastPublishedAt = millis();
+  }
+}
+
+void handleSharedEvent(const char *event, const char *data){
+    String eventName = String( event ); // convert to a string object
+    String deviceID = System.deviceID();
+
+    if( eventName.indexOf( deviceID ) != -1 ){
+      return;
+    }
+    playNotes();
+}
+
+void playNotes(){ // plays tone for last minute
+   
+    for (int thisNote = 0; thisNote < 2; thisNote++) { // iterate over the notes of the melody:
+
+      // to calculate the note duration, take one second
+      // divided by the note type.
+      //e.g. quarter note = 1000 / 4, eighth note = 1000/8, etc.
+      int noteDuration = 1000/noteDurations4[thisNote];
+      tone(piezoPin, tone1[thisNote],noteDuration);
+
+      // to distinguish the notes, set a minimum time between them. the note's duration + 30% seems to work well:
+      int pauseBetweenNotes = noteDuration * 1.30;
+      delay(pauseBetweenNotes);
+      // stop the tone playing:
+      noTone(piezoPin);
+    }
+}
+// _____________________________________________________________________________________________________
+
+// SOLENOID
+long lastPublishedAt = 0;
+int solP = D3;
+int button =D2; //#define button D2
+int publishAfter = 10000;
+
+void setup() {
+  Particle.subscribe(  "diot/2019/paired/sthfoodout/" , handleSharedEvent );
+  pinMode (button, INPUT_PULLUP);
+  pinMode (solP, OUTPUT);
+  digitalWrite(solP, LOW);
+}
+
+void loop(){
+    if (digitalRead(button)==LOW) {
+        publishMyEvent();
+    }
+    delay(100);
+}
+
+void publishMyEvent(){
+  if( lastPublishedAt + publishAfter < millis() ){
+      String eventName = "diot/2019/paired/sthfoodout/" + System.deviceID();
+      Particle.publish( eventName, "Food is Available" );
+      lastPublishedAt = millis();
+      }
+  }
+
+void handleSharedEvent(const char *event, const char *data){
+    String eventName = String( event ); 
+    String deviceID = System.deviceID();
+
+    if( eventName.indexOf( deviceID ) != -1 ){
+      return;
+    }
+      solenoid();
+}
+
+void solenoid() {
+    for (int i=0;i<10;i++) {
+      digitalWrite(solP, HIGH);
+      delay(200);
+      digitalWrite(solP, LOW);
+      delay(200);
+    }    
+}
+// STANDING ON THE SHOULDER OF GIANTS
