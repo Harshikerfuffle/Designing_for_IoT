@@ -9,5 +9,4 @@ Cute, crazy and experimental projects to explore the IoT
 alt="Video of the Fish Feeder" width="110" height="90" border="10" /></a>
 
 * #### [Fritzing Diagram](https://github.com/Harshikerfuffle/Designing_for_IoT/blob/master/Images/FishFeeder.fzz)
-
 * #### [Code](https://github.com/Harshikerfuffle/Designing_for_IoT/blob/master/FishFeeder.ino)
