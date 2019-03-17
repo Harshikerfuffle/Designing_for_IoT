@@ -7,3 +7,7 @@ Cute, crazy and experimental projects to explore the IoT
 #### Video of how the Fish Feeder works: <br>
 <a href="https://www.youtube.com/watch?v=Fo7VtlqBh68&t=3s" target="_blank"><img src="https://github.com/Harshikerfuffle/Designing_for_IoT/blob/master/Images/video-player.png" 
 alt="Video of the Fish Feeder" width="110" height="90" border="10" /></a>
+
+#### Fritzing Diagram: [I'm an inline-style link with title](https://github.com/Harshikerfuffle/Designing_for_IoT/blob/master/Images/FishFeeder.fzz)
+
+#### Code: [I'm an inline-style link with title](https://github.com/Harshikerfuffle/Designing_for_IoT/blob/master/FishFeeder.ino)
