@@ -9,7 +9,7 @@ Cute, crazy and experimental projects to explore Particle Argon and Arduino
 alt="Video of the Fish Feeder" width="110" height="90" border="10" /></a>
 
 * #### [Fritzing Diagram](https://github.com/Harshikerfuffle/Designing_for_IoT/blob/master/Images/FishFeeder.fzz)
-* #### [Code](https://github.com/Harshikerfuffle/Designing_for_IoT/blob/master/FishFeeder.ino)
+* #### [Code](https://github.com/Harshikerfuffle/Designing_for_IoT/blob/master/FishFeeder.ino) <br><br>
 
 ## 2. Temperature Detector
 ![alt text](https://github.com/Harshikerfuffle/Designing_for_IoT/blob/master/Images/tempDetector.png "circuit diagram made in Fritzing")
