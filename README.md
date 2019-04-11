@@ -14,3 +14,4 @@ alt="Video of the Fish Feeder" width="110" height="90" border="10" /></a>
 ## 2. Temperature Detector
 ![alt text](https://github.com/Harshikerfuffle/Designing_for_IoT/blob/master/Images/tempDetector.png "circuit diagram made in Fritzing")
 * #### [Fritzing Diagram](https://github.com/Harshikerfuffle/Designing_for_IoT/blob/master/Images/tempDetector.fzz)
+* #### [Code](https://github.com/Harshikerfuffle/Designing_for_IoT/blob/master/temperature_sensing.ino)
